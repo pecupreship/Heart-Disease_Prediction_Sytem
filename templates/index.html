@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      margin: 0;
+      padding: 40px;
+      background-color:#FFD700;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page-title {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: darkred;
+      text-align: center;
+    }
+
+    form {
+      background-color: red;
+      padding: 20px;
+      border-radius: 10px;
+      color: white;
+      max-width: 800px;
+      width: 100%;
+      margin: 10px 0;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .form-grid p {
+      margin: 0;
+    }
+
+    input, button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #fff;
+      color: red;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    .result {
+      text-align: center;
+      font-size: 1.2em;
+      margin-top: 20px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🔶 Page Title -->
+  <div class="page-title">Heart Disease Detection System</div>
+
+  <!-- 🔴 First Form -->
+  <form action="/predict" method="post">
+    <h2>Predict Heart Disease</h2>
+    <div class="form-grid">
+      <p><input name="age" placeholder="Age"></p>
+      <p><input name="sex" placeholder="Sex (1=Male, 0=Female)"></p>
+      <p><input name="cp" placeholder="Chest Pain Type (0-3)"></p>
+      <p><input name="trestbps" placeholder="Resting Blood Pressure"></p>
+      <p><input name="chol" placeholder="Cholesterol"></p>
+      <p><input name="fbs" placeholder="Fasting Blood Sugar (1/0)"></p>
+      <p><input name="restecg" placeholder="Resting ECG (0-2)"></p>
+      <p><input name="thalach" placeholder="Max Heart Rate"></p>
+      <p><input name="exang" placeholder="Exercise Induced Angina (1/0)"></p>
+      <p><input name="oldpeak" placeholder="Oldpeak (e.g., 1.4)"></p>
+      <p><input name="slope" placeholder="Slope (0-2)"></p>
+      <p><input name="ca" placeholder="Number of Major Vessels (0-3)"></p>
+      <p><input name="thal" placeholder="Thal (1=Normal, 2=Fixed, 3=Reversible)"></p>
+    </div>
+    <button type="submit">Predict</button>
+  </form>
+
+  {% if prediction_text %}
+    <div class="result">{{ prediction_text }}</div>
+  {% endif %}
+
+  <!-- 🔴 Second Form -->
+  <form action="/add-data" method="post">
+    <h2>Add New Patient Record</h2>
+    <div class="form-grid">
+      <p><input name="age" placeholder="Age"></p>
+      <p><input name="sex" placeholder="Sex (1=Male, 0=Female)"></p>
+      <p><input name="cp" placeholder="Chest Pain Type (0-3)"></p>
+      <p><input name="trestbps" placeholder="Resting Blood Pressure"></p>
+      <p><input name="chol" placeholder="Cholesterol"></p>
+      <p><input name="fbs" placeholder="Fasting Blood Sugar (1/0)"></p>
+      <p><input name="restecg" placeholder="Resting ECG (0-2)"></p>
+      <p><input name="thalach" placeholder="Max Heart Rate"></p>
+      <p><input name="exang" placeholder="Exercise Induced Angina (1/0)"></p>
+      <p><input name="oldpeak" placeholder="Oldpeak (e.g., 1.4)"></p>
+      <p><input name="slope" placeholder="Slope (0-2)"></p>
+      <p><input name="ca" placeholder="Number of Major Vessels (0-3)"></p>
+      <p><input name="thal" placeholder="Thal (1=Normal, 2=Fixed, 3=Reversible)"></p>
+      <p><input name="target" placeholder="Target (1=Heart Disease, 0=None)"></p>
+    </div>
+    <button type="submit">Add Record</button>
+  </form>
+
+</body>
+</html>
