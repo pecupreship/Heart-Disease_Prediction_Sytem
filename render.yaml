@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: heart-disease-app
+    env: python
+    plan: free
+    buildCommand: ""
+    startCommand: gunicorn app:app
+    branch: master
+    autoDeploy: true
